@@ -9,7 +9,7 @@ using SGC.Infrastructure.Data;
 namespace SGC.Infrastructure.Migrations
 {
     [DbContext(typeof(ClienteContext))]
-    [Migration("20210108214327_InitialCreate")]
+    [Migration("20210109143509_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -31,9 +31,16 @@ namespace SGC.Infrastructure.Migrations
                         .IsRequired()
                         .HasColumnType("varchar(11)");
 
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasColumnType("varchar(200)");
+
                     b.Property<string>("Nome")
                         .IsRequired()
                         .HasColumnType("varchar(200)");
+
+                    b.Property<string>("Telefone")
+                        .HasColumnType("varchar(15)");
 
                     b.HasKey("ClienteId");
 

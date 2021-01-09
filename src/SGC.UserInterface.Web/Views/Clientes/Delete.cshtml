@@ -4,9 +4,9 @@
     ViewData["Title"] = "Delete";
 }
 
-<h1>Deletar Cliente</h1>
 
-<h4>Tem certeza que deseja excluir o Cliente ?</h4>
+<h4>Tem certeza que deseja excluir o Cliente @Html.DisplayFor(model => model.Nome) ?Todos os dados serão perdidos.</h4>
+<br />
 <div>
     <h5>Cliente</h5>
     <hr />
@@ -23,6 +23,7 @@
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.Cpf)
         </dd>
+
     </dl>
     
     <form asp-action="Delete">

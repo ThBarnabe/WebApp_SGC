@@ -29,25 +29,6 @@ namespace SGC.Infrastructure.Migrations
                         .IsRequired()
                         .HasColumnType("varchar(11)");
 
-                    b.Property<string>("Nome")
-                        .IsRequired()
-                        .HasColumnType("varchar(200)");
-
-                    b.HasKey("ClienteId");
-
-                    b.ToTable("Cliente");
-                });
-
-            modelBuilder.Entity("SGC.ApplicationCore.Entity.Contato", b =>
-                {
-                    b.Property<int>("Contatoid")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .UseIdentityColumn();
-
-                    b.Property<int>("ClienteId")
-                        .HasColumnType("int");
-
                     b.Property<string>("Email")
                         .IsRequired()
                         .HasColumnType("varchar(200)");
@@ -59,27 +40,9 @@ namespace SGC.Infrastructure.Migrations
                     b.Property<string>("Telefone")
                         .HasColumnType("varchar(15)");
 
-                    b.HasKey("Contatoid");
+                    b.HasKey("ClienteId");
 
-                    b.HasIndex("ClienteId");
-
-                    b.ToTable("Contato");
-                });
-
-            modelBuilder.Entity("SGC.ApplicationCore.Entity.Contato", b =>
-                {
-                    b.HasOne("SGC.ApplicationCore.Entity.Cliente", "Cliente")
-                        .WithMany("Contatos")
-                        .HasForeignKey("ClienteId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Cliente");
-                });
-
-            modelBuilder.Entity("SGC.ApplicationCore.Entity.Cliente", b =>
-                {
-                    b.Navigation("Contatos");
+                    b.ToTable("Cliente");
                 });
 #pragma warning restore 612, 618
         }

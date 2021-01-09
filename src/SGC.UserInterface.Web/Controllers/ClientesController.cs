@@ -54,7 +54,7 @@ namespace SGC.UserInterface.Web.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("ClienteId,Nome,Cpf")] Cliente cliente)
+        public async Task<IActionResult> Create([Bind("ClienteId,Nome,Cpf,Telefone,Email")] Cliente cliente)
         {
             if (ModelState.IsValid)
             {
@@ -86,7 +86,7 @@ namespace SGC.UserInterface.Web.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("ClienteId,Nome,Cpf")] Cliente cliente)
+        public async Task<IActionResult> Edit(int id, [Bind("ClienteId,Nome,Cpf,Telefone,Email")] Cliente cliente)
         {
             if (id != cliente.ClienteId)
             {
