@@ -21,11 +21,20 @@ namespace SGC.Infrastructure.Data
             #region Configurações das Tabelas
 
             modelBuilder.Entity<Cliente>().ToTable("Cliente"); 
-           // modelBuilder.Entity<Contato>().ToTable("Contato");
+            modelBuilder.Entity<Contato>().ToTable("Contato");
 
             #endregion
 
             #region Configurações de Cliente
+
+            modelBuilder.Entity<Cliente>()
+                .HasKey(c => c.ClienteId);
+
+            modelBuilder.Entity<Cliente>()
+                .HasMany(c => c.Contatos)
+                .WithOne(c => c.Cliente)
+                .HasForeignKey(c => c.ClienteId)
+                .HasPrincipalKey(c => c.ClienteId);
 
             modelBuilder.Entity<Cliente>().Property(e => e.Cpf)
                 .HasColumnType("varchar(11)")
@@ -39,7 +48,7 @@ namespace SGC.Infrastructure.Data
 
             #region Configurações de Contato
 
-          /*  modelBuilder.Entity<Contato>().Property(e => e.Nome)
+            modelBuilder.Entity<Contato>().Property(e => e.Nome)
                .HasColumnType("varchar(200)")
                .IsRequired();
 
@@ -48,7 +57,7 @@ namespace SGC.Infrastructure.Data
                .IsRequired();
 
             modelBuilder.Entity<Contato>().Property(e => e.Telefone)
-               .HasColumnType("varchar(15)");*/
+               .HasColumnType("varchar(15)");
             #endregion
         }
     }
